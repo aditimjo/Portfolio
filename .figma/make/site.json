@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to easily build personalized portfolio websites by inputting their information and selecting preferred layouts for professional showcase.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
