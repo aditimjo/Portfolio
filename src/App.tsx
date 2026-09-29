@@ -8,6 +8,7 @@ import { Footerdemo } from "@/components/ui/footer-section"
 import GlowCursor from "@/components/ui/glow-cursor"
 import ModalCards, { type CardData } from "@/components/ui/modal-cards"
 import { Timeline } from "@/components/ui/timeline"
+import ChecklistCard, { type ChecklistItem } from "@/components/ui/checklist-card"
 import StickerCluster, { type Sticker } from "@/components/ui/sticker-cluster"
 import ToolFolder, { type FloatingTool, type Tool } from "@/components/ui/tool-folder"
 import { AntigravityLogo, GeminiLogo, SimpleIconLogo } from "@/components/ui/tool-logos"
@@ -70,22 +71,31 @@ const skills: Sticker[] = [
   { label: "information architecture", color: "#FFE07A", ink: "#473600", rotate: -3 },
 ]
 
-const domains: Sticker[] = [
-  { label: "fintech", color: "#3D7BFF", ink: "#0A1D4A", rotate: 4 },
-  { label: "human-centred AI", color: "#39C6F2", ink: "#05324A", rotate: -5 },
-  { label: "logistics", color: "#A48BFF", ink: "#26115C", rotate: 2 },
-  { label: "education", color: "#5CD49E", ink: "#08392A", rotate: -6 },
-  { label: "enterprise SaaS", color: "#7FA6FF", ink: "#0E2257", rotate: 5 },
-  { label: "tourism", color: "#8DE3F5", ink: "#0A3A47", rotate: -3 },
-  { label: "AR/VR", color: "#C7B5FF", ink: "#2C1666", rotate: 7 },
+const domains: ChecklistItem[] = [
+  { label: "Fintech", done: true },
+  { label: "Human-centred AI", done: true },
+  { label: "Logistics", done: true },
+  { label: "Education", done: true },
+  { label: "Enterprise SaaS", done: true },
+  { label: "Tourism", done: true },
+  { label: "AR/VR", done: true },
+  {
+    label: "thinking…",
+    // Stand-in until the cat sticker image is added.
+    sticker: (
+      <span className="checklist-sticker" role="img" aria-label="Cat tapping its watch">
+        🐱
+      </span>
+    ),
+  },
 ]
 
 const floatingTools: FloatingTool[] = [
-  { name: "Antigravity", logo: <AntigravityLogo />, x: 18, y: 22, rotate: -6 },
+  { name: "Antigravity", logo: <AntigravityLogo />, x: 16, y: 19, rotate: -6 },
   { name: "Gemini", logo: <GeminiLogo />, x: 50, y: 10, rotate: 4 },
   { name: "Claude", logo: <SimpleIconLogo icon={siClaude} />, x: 82, y: 20, rotate: 8 },
-  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 28, y: 45, rotate: -4 },
-  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 73, y: 44, rotate: 6 },
+  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 30, y: 40, rotate: -4 },
+  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 74, y: 40, rotate: 6 },
 ]
 
 // Figma, Miro and Notion are placeholders; swap in the tools you actually use.
@@ -252,12 +262,17 @@ export default function App() {
             </div>
             <div className="toolkit-group toolkit-group--tools">
               <h3>Tools</h3>
-              <ToolFolder floating={floatingTools} tucked={tuckedTools} label="Tools I use" />
+              <ToolFolder
+                floating={floatingTools}
+                tucked={tuckedTools}
+                label="Tools I use"
+                subtitle="Design & AI toolkit"
+              />
               <p className="toolkit-hint">Drag the cards around</p>
             </div>
             <div className="toolkit-group toolkit-group--domains">
               <h3>Domains</h3>
-              <StickerCluster stickers={domains} aria-label="Domains" />
+              <ChecklistCard title="Worked in" items={domains} />
             </div>
           </div>
         </section>

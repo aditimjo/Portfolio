@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { EllipsisVertical, Settings } from "lucide-react"
 
 import { DraggableCardBody, DraggableCardContainer } from "@/components/ui/draggable-card"
 import { cn } from "@/lib/utils"
@@ -23,13 +24,23 @@ type ToolFolderProps = {
   /** up to three cards tucked into the folder, back to front */
   tucked: Tool[]
   label: string
+  /** smaller line under the label */
+  subtitle?: string
   className?: string
 }
 
 // Where the connecting threads leave the folder, in stage percentages.
 const THREAD_ORIGIN = { x: 50, y: 70 }
 
-export default function ToolFolder({ floating, tucked, label, className }: ToolFolderProps) {
+export default function ToolFolder({
+  floating,
+  tucked,
+  label,
+  subtitle,
+  className,
+}: ToolFolderProps) {
+  const toolCount = floating.length + tucked.length
+
   return (
     <DraggableCardContainer className={cn("tool-stage", className)}>
       <svg
@@ -68,7 +79,15 @@ export default function ToolFolder({ floating, tucked, label, className }: ToolF
           ))}
         </div>
         <div className="tool-folder-front">
-          <span className="tool-folder-label">{label}</span>
+          <div className="tool-folder-heading">
+            <span className="tool-folder-label">{label}</span>
+            {subtitle && <span className="tool-folder-subtitle">{subtitle}</span>}
+          </div>
+          <div className="tool-folder-actions">
+            <EllipsisVertical />
+            <Settings />
+          </div>
+          <span className="tool-folder-count">{toolCount} tools</span>
         </div>
       </div>
 
