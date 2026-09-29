@@ -91,11 +91,11 @@ const domains: ChecklistItem[] = [
 ]
 
 const floatingTools: FloatingTool[] = [
-  { name: "Antigravity", logo: <AntigravityLogo />, x: 16, y: 19, rotate: -6 },
-  { name: "Gemini", logo: <GeminiLogo />, x: 50, y: 10, rotate: 4 },
-  { name: "Claude", logo: <SimpleIconLogo icon={siClaude} />, x: 82, y: 20, rotate: 8 },
-  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 30, y: 40, rotate: -4 },
-  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 74, y: 40, rotate: 6 },
+  { name: "Antigravity", logo: <AntigravityLogo />, x: 16, y: 15, rotate: -6 },
+  { name: "Gemini", logo: <GeminiLogo />, x: 50, y: 8, rotate: 4 },
+  { name: "Claude", logo: <SimpleIconLogo icon={siClaude} />, x: 84, y: 16, rotate: 8 },
+  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 24, y: 34, rotate: -4 },
+  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 77, y: 34, rotate: 6 },
 ]
 
 // Figma, Miro and Notion are placeholders; swap in the tools you actually use.

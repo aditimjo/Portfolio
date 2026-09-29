@@ -102,7 +102,6 @@ a {
   --text-primary: #111;
   --text-secondary: #6a7282;
   --toolkit-thread: rgb(17 17 17 / 12%);
-  --toolkit-slot: rgb(17 17 17 / 16%);
   --tool-card-border: rgb(17 17 17 / 7%);
   --tool-card-shadow: rgb(17 17 17 / 26%);
   --checklist-bg: #fff;
@@ -130,7 +129,6 @@ a {
   --text-primary: #f7f7f8;
   --text-secondary: #a9afbb;
   --toolkit-thread: rgb(255 255 255 / 14%);
-  --toolkit-slot: rgb(255 255 255 / 20%);
   --tool-card-border: rgb(255 255 255 / 10%);
   --tool-card-shadow: rgb(0 0 0 / 60%);
   --checklist-bg: #1c1c1e;
@@ -879,7 +877,7 @@ a {
   position: relative;
   width: 100%;
   max-width: 400px;
-  aspect-ratio: 400 / 470;
+  aspect-ratio: 400 / 540;
 }
 
 .tool-threads {
@@ -894,15 +892,6 @@ a {
   fill: none;
   stroke: var(--toolkit-thread);
   stroke-width: 1;
-}
-
-.tool-slot {
-  position: absolute;
-  width: var(--tool-card);
-  height: var(--tool-card);
-  border: 1.5px dashed var(--toolkit-slot);
-  border-radius: 18px;
-  translate: calc(-50% + 12px) calc(-50% - 12px);
 }
 
 .tool-card-anchor {
@@ -961,8 +950,8 @@ a {
   bottom: 1%;
   left: 50%;
   z-index: 2;
-  width: 80%;
-  height: 37%;
+  width: 60%;
+  aspect-ratio: 1;
   translate: -50% 0;
 }
 
@@ -1008,7 +997,7 @@ a {
   position: absolute;
   bottom: 0;
   display: flex;
-  width: 28%;
+  width: 30%;
   aspect-ratio: 1 / 1.1;
   padding-top: 9%;
   justify-content: center;
@@ -1019,18 +1008,18 @@ a {
 }
 
 .tool-tucked-card--0 {
-  left: 14%;
+  left: 10%;
   rotate: -7deg;
   translate: 0 14%;
 }
 
 .tool-tucked-card--1 {
-  left: 36%;
+  left: 35%;
   z-index: 1;
 }
 
 .tool-tucked-card--2 {
-  left: 58%;
+  left: 60%;
   rotate: 6deg;
   translate: 0 10%;
 }
@@ -1047,7 +1036,7 @@ a {
   z-index: 2;
   display: flex;
   height: 82%;
-  padding: 6% 7%;
+  padding: 9% 9%;
   justify-content: space-between;
   border: 1px solid rgb(255 255 255 / 45%);
   border-radius: 20px;
@@ -1095,8 +1084,8 @@ a {
 
 .tool-folder-count {
   position: absolute;
-  bottom: 12%;
-  left: 7%;
+  bottom: 10%;
+  left: 9%;
   font-family: var(--sticker-font);
   font-size: 14px;
   font-weight: 500;

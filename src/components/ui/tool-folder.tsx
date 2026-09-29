@@ -30,7 +30,7 @@ type ToolFolderProps = {
 }
 
 // Where the connecting threads leave the folder, in stage percentages.
-const THREAD_ORIGIN = { x: 50, y: 70 }
+const THREAD_ORIGIN = { x: 50, y: 62 }
 
 export default function ToolFolder({
   floating,
@@ -59,15 +59,6 @@ export default function ToolFolder({
           />
         ))}
       </svg>
-
-      {floating.map((tool) => (
-        <span
-          key={`${tool.name}-slot`}
-          className="tool-slot"
-          style={{ left: `${tool.x}%`, top: `${tool.y}%`, rotate: `${tool.rotate + 6}deg` }}
-          aria-hidden="true"
-        />
-      ))}
 
       <div className="tool-folder" aria-hidden="true">
         <div className="tool-folder-back" />
