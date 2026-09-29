@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+import catThinkingSticker from "@/assets/cat-thinking.png"
 import developerToolsImage from "@/assets/work-developer-tools.jpg"
 import enterpriseAiImage from "@/assets/work-enterprise-ai.jpg"
 import productResearchImage from "@/assets/work-product-research.jpg"
@@ -10,7 +11,7 @@ import ModalCards, { type CardData } from "@/components/ui/modal-cards"
 import { Timeline } from "@/components/ui/timeline"
 import ChecklistCard, { type ChecklistItem } from "@/components/ui/checklist-card"
 import StickerCluster, { type Sticker } from "@/components/ui/sticker-cluster"
-import ToolFolder, { type FloatingTool, type Tool } from "@/components/ui/tool-folder"
+import ToolFolder, { type Tool } from "@/components/ui/tool-folder"
 import { AntigravityLogo, GeminiLogo, SimpleIconLogo } from "@/components/ui/tool-logos"
 import { siClaude, siClaudecode, siFigma, siGooglecolab, siMiro, siNotion } from "simple-icons"
 
@@ -81,27 +82,26 @@ const domains: ChecklistItem[] = [
   { label: "AR/VR", done: true },
   {
     label: "thinking…",
-    // Stand-in until the cat sticker image is added.
     sticker: (
-      <span className="checklist-sticker" role="img" aria-label="Cat tapping its watch">
-        🐱
-      </span>
+      <img
+        className="checklist-sticker"
+        src={catThinkingSticker}
+        alt="Cat in glasses reading a sheet of paper"
+        draggable={false}
+      />
     ),
   },
 ]
 
-const floatingTools: FloatingTool[] = [
-  { name: "Antigravity", logo: <AntigravityLogo />, x: 16, y: 15, rotate: -6 },
-  { name: "Gemini", logo: <GeminiLogo />, x: 50, y: 8, rotate: 4 },
-  { name: "Claude", logo: <SimpleIconLogo icon={siClaude} />, x: 84, y: 16, rotate: 8 },
-  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 24, y: 34, rotate: -4 },
-  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 77, y: 34, rotate: 6 },
-]
-
-// Figma, Miro and Notion are placeholders; swap in the tools you actually use.
-const tuckedTools: Tool[] = [
-  { name: "Miro", logo: <SimpleIconLogo icon={siMiro} /> },
+// Back row first. Figma, Miro and Notion are placeholders; swap in the tools you actually use.
+const tools: Tool[] = [
+  { name: "Antigravity", logo: <AntigravityLogo /> },
+  { name: "Gemini", logo: <GeminiLogo /> },
+  { name: "Claude", logo: <SimpleIconLogo icon={siClaude} /> },
   { name: "Figma", logo: <SimpleIconLogo icon={siFigma} /> },
+  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} /> },
+  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} /> },
+  { name: "Miro", logo: <SimpleIconLogo icon={siMiro} /> },
   { name: "Notion", logo: <SimpleIconLogo icon={siNotion} /> },
 ]
 
@@ -263,8 +263,7 @@ export default function App() {
             <div className="toolkit-group toolkit-group--tools">
               <h3>Tools</h3>
               <ToolFolder
-                floating={floatingTools}
-                tucked={tuckedTools}
+                tools={tools}
                 label="Tools I use"
                 subtitle="Design & AI toolkit"
               />

@@ -101,7 +101,6 @@ a {
   --surface-raised: rgb(255 255 255 / 72%);
   --text-primary: #111;
   --text-secondary: #6a7282;
-  --toolkit-thread: rgb(17 17 17 / 12%);
   --tool-card-border: rgb(17 17 17 / 7%);
   --tool-card-shadow: rgb(17 17 17 / 26%);
   --checklist-bg: #fff;
@@ -128,7 +127,6 @@ a {
   --surface-raised: rgb(28 28 30 / 78%);
   --text-primary: #f7f7f8;
   --text-secondary: #a9afbb;
-  --toolkit-thread: rgb(255 255 255 / 14%);
   --tool-card-border: rgb(255 255 255 / 10%);
   --tool-card-shadow: rgb(0 0 0 / 60%);
   --checklist-bg: #1c1c1e;
@@ -777,7 +775,7 @@ a {
 
 /* Skills, tools & domains: sticker piles either side of a tool folder */
 .toolkit-section {
-  --tool-card: 84px;
+  --tool-card: 64px;
   --folder-back-top: #57a8ec;
   --folder-back-bottom: #3b8fdd;
   --sticker-font: "Plus Jakarta Sans", var(--font-site);
@@ -877,27 +875,18 @@ a {
   position: relative;
   width: 100%;
   max-width: 400px;
-  aspect-ratio: 400 / 540;
+  aspect-ratio: 400 / 380;
 }
 
-.tool-threads {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.tool-threads path {
-  fill: none;
-  stroke: var(--toolkit-thread);
-  stroke-width: 1;
-}
-
+/* cards are filed into the folder: anchored by their bottom edge, behind the front panel */
 .tool-card-anchor {
   position: absolute;
-  z-index: 3;
-  translate: -50% -50%;
+  translate: -50% 0;
+}
+
+/* a card being dragged lifts above the folder and the sticker piles */
+.tool-card-anchor:active {
+  z-index: 60 !important;
 }
 
 .tool-card {
@@ -920,37 +909,23 @@ a {
   touch-action: none;
 }
 
-.tool-card-logo,
-.tool-tucked-logo {
+.tool-card-logo {
   display: block;
+  width: 46%;
   aspect-ratio: 1;
 }
 
-.tool-card-logo {
-  width: 36%;
-}
-
-.tool-card-logo > svg,
-.tool-tucked-logo > svg {
+.tool-card-logo > svg {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.tool-card-name {
-  color: #4b5563;
-  font-family: var(--font-site);
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
 }
 
 .tool-folder {
   position: absolute;
   bottom: 1%;
   left: 50%;
-  z-index: 2;
-  width: 60%;
+  width: 72%;
   aspect-ratio: 1;
   translate: -50% 0;
 }
@@ -986,54 +961,12 @@ a {
   transform-origin: bottom left;
 }
 
-.tool-folder-tucked {
-  position: absolute;
-  right: 0;
-  bottom: 84%;
-  left: 0;
-}
-
-.tool-tucked-card {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  width: 30%;
-  aspect-ratio: 1 / 1.1;
-  padding-top: 9%;
-  justify-content: center;
-  border: 1px solid rgb(17 17 17 / 6%);
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 6px 16px -8px rgb(17 17 17 / 30%);
-}
-
-.tool-tucked-card--0 {
-  left: 10%;
-  rotate: -7deg;
-  translate: 0 14%;
-}
-
-.tool-tucked-card--1 {
-  left: 35%;
-  z-index: 1;
-}
-
-.tool-tucked-card--2 {
-  left: 60%;
-  rotate: 6deg;
-  translate: 0 10%;
-}
-
-.tool-tucked-logo {
-  width: 46%;
-}
-
 .tool-folder-front {
   position: absolute;
   right: -1%;
   bottom: 0;
   left: -1%;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   height: 82%;
   padding: 9% 9%;
@@ -1188,25 +1121,12 @@ a {
 
 /* die-cut sticker next to the last item */
 .checklist-sticker {
-  display: grid;
-  width: 52px;
-  height: 52px;
-  margin: -14px 0 -14px auto;
-  place-items: center;
-  overflow: hidden;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  background: #fdf1e4;
-  box-shadow: 0 6px 14px -6px rgb(17 17 17 / 45%);
-  font-size: 30px;
-  line-height: 1;
-  rotate: -10deg;
-}
-
-.checklist-sticker > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 76px;
+  height: auto;
+  margin: -30px -14px -22px auto;
+  filter: drop-shadow(0 5px 8px rgb(17 17 17 / 28%));
+  rotate: -8deg;
+  user-select: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1842,7 +1762,7 @@ a {
   }
 
   .toolkit-section {
-    --tool-card: 70px;
+    --tool-card: 56px;
 
     width: min(100% - 32px, 540px);
     margin-top: 80px;
