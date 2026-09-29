@@ -14,11 +14,11 @@ import dataCheetah from "@/assets/inspiration/data-cheetah.jpg"
 import floatingRooftops from "@/assets/inspiration/floating-rooftops.jpg"
 import generativeBlossom from "@/assets/inspiration/generative-blossom.jpg"
 import horseLionCube from "@/assets/inspiration/horse-lion-cube.jpg"
-import miyazakiQuote from "@/assets/inspiration/miyazaki-quote.jpg"
 import vanGoghIrises from "@/assets/inspiration/van-gogh-irises.jpg"
 import glitchMushrooms from "@/assets/inspiration/glitch-mushrooms.jpg"
 import lasManosHand from "@/assets/inspiration/las-manos-hand.jpg"
 import mechanicalButterfly from "@/assets/inspiration/mechanical-butterfly.jpg"
+import pixelDnaHand from "@/assets/inspiration/pixel-dna-hand.jpg"
 import phoneHandoff from "@/assets/inspiration/phone-handoff.jpg"
 import threadTheory from "@/assets/inspiration/thread-theory.jpg"
 
@@ -76,7 +76,7 @@ const marqueePath =
 const marqueeImages = [
   { src: anatomyIllustration, alt: "Colourful anatomical illustration of a torso with a heart monitor" },
   { src: floatingRooftops, alt: "Poster of traditional Chinese rooftops floating among glass slabs" },
-  { src: miyazakiQuote, alt: "Hayao Miyazaki with the quote \"Always believe in yourself\"" },
+  { src: pixelDnaHand, alt: "Hand holding a DNA helix dissolving into glowing pixels" },
   { src: generativeBlossom, alt: "Collage of cherry blossom photography and generative dot patterns" },
   { src: dataCheetah, alt: "Running cheetah overlaid with glowing data points" },
   { src: vanGoghIrises, alt: "Irises by Vincent van Gogh" },
@@ -259,7 +259,7 @@ export default function App() {
           <MarqueeAlongSvgPath
             path={marqueePath}
             viewBox="0 0 996 330"
-            baseVelocity={8}
+            baseVelocity={4}
             slowdownOnHover
             draggable
             repeat={2}
