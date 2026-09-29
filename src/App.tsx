@@ -8,19 +8,10 @@ import { Footerdemo } from "@/components/ui/footer-section"
 import GlowCursor from "@/components/ui/glow-cursor"
 import ModalCards, { type CardData } from "@/components/ui/modal-cards"
 import { Timeline } from "@/components/ui/timeline"
-import MarqueeAlongSvgPath from "@/components/ui/marquee-along-svg-path"
-import anatomyIllustration from "@/assets/inspiration/anatomy-illustration.jpg"
-import dataCheetah from "@/assets/inspiration/data-cheetah.jpg"
-import floatingRooftops from "@/assets/inspiration/floating-rooftops.jpg"
-import generativeBlossom from "@/assets/inspiration/generative-blossom.jpg"
-import horseLionCube from "@/assets/inspiration/horse-lion-cube.jpg"
-import vanGoghIrises from "@/assets/inspiration/van-gogh-irises.jpg"
-import glitchMushrooms from "@/assets/inspiration/glitch-mushrooms.jpg"
-import lasManosHand from "@/assets/inspiration/las-manos-hand.jpg"
-import mechanicalButterfly from "@/assets/inspiration/mechanical-butterfly.jpg"
-import pixelDnaHand from "@/assets/inspiration/pixel-dna-hand.jpg"
-import phoneHandoff from "@/assets/inspiration/phone-handoff.jpg"
-import threadTheory from "@/assets/inspiration/thread-theory.jpg"
+import StickerCluster, { type Sticker } from "@/components/ui/sticker-cluster"
+import ToolFolder, { type FloatingTool, type Tool } from "@/components/ui/tool-folder"
+import { AntigravityLogo, GeminiLogo, SimpleIconLogo } from "@/components/ui/tool-logos"
+import { siClaude, siClaudecode, siFigma, siGooglecolab, siMiro, siNotion } from "simple-icons"
 
 const selectedWork: CardData[] = [
   {
@@ -69,23 +60,39 @@ const navigation = [
   },
 ]
 
-const marqueePath =
-  "M1 209.434C58.5872 255.935 387.926 325.938 482.583 209.434C600.905 63.8051 525.516 -43.2211 427.332 19.9613C329.149 83.1436 352.902 242.723 515.041 267.302C644.752 286.966 943.56 181.94 995 156.5"
+const skills: Sticker[] = [
+  { label: "user research", color: "#FFC83D", ink: "#4D3300", rotate: -4 },
+  { label: "interaction design", color: "#FF8B3D", ink: "#4A1F00", rotate: 3 },
+  { label: "prototyping", color: "#FF5B36", ink: "#420F00", rotate: -7 },
+  { label: "usability testing", color: "#FFB0A8", ink: "#4F161B", rotate: 5 },
+  { label: "design systems", color: "#FFD6A0", ink: "#4D2A00", rotate: -2 },
+  { label: "accessibility", color: "#FF9E8A", ink: "#4A1308", rotate: 6 },
+  { label: "information architecture", color: "#FFE07A", ink: "#473600", rotate: -3 },
+]
 
-// Inspiration board images, moving along the marquee path.
-const marqueeImages = [
-  { src: anatomyIllustration, alt: "Colourful anatomical illustration of a torso with a heart monitor" },
-  { src: floatingRooftops, alt: "Poster of traditional Chinese rooftops floating among glass slabs" },
-  { src: pixelDnaHand, alt: "Hand holding a DNA helix dissolving into glowing pixels" },
-  { src: generativeBlossom, alt: "Collage of cherry blossom photography and generative dot patterns" },
-  { src: dataCheetah, alt: "Running cheetah overlaid with glowing data points" },
-  { src: vanGoghIrises, alt: "Irises by Vincent van Gogh" },
-  { src: horseLionCube, alt: "Stippled engraving of a horse and lion sliced into an isometric cube" },
-  { src: phoneHandoff, alt: "Illustration of a hand passing a glowing phone to a silhouetted person" },
-  { src: threadTheory, alt: "Thread Theory: An Index of Mind poster linking a figure to hand-lettered notes" },
-  { src: lasManosHand, alt: "Las Manos poster of a hand assembled from mixed-material grid tiles" },
-  { src: mechanicalButterfly, alt: "Butterfly built from disassembled electronic parts" },
-  { src: glitchMushrooms, alt: "Tree mushrooms merged with blue-screen error text" },
+const domains: Sticker[] = [
+  { label: "fintech", color: "#3D7BFF", ink: "#0A1D4A", rotate: 4 },
+  { label: "human-centred AI", color: "#39C6F2", ink: "#05324A", rotate: -5 },
+  { label: "logistics", color: "#A48BFF", ink: "#26115C", rotate: 2 },
+  { label: "education", color: "#5CD49E", ink: "#08392A", rotate: -6 },
+  { label: "enterprise SaaS", color: "#7FA6FF", ink: "#0E2257", rotate: 5 },
+  { label: "tourism", color: "#8DE3F5", ink: "#0A3A47", rotate: -3 },
+  { label: "AR/VR", color: "#C7B5FF", ink: "#2C1666", rotate: 7 },
+]
+
+const floatingTools: FloatingTool[] = [
+  { name: "Antigravity", logo: <AntigravityLogo />, x: 18, y: 22, rotate: -6 },
+  { name: "Gemini", logo: <GeminiLogo />, x: 50, y: 10, rotate: 4 },
+  { name: "Claude", logo: <SimpleIconLogo icon={siClaude} />, x: 82, y: 20, rotate: 8 },
+  { name: "Claude Code", logo: <SimpleIconLogo icon={siClaudecode} />, x: 28, y: 45, rotate: -4 },
+  { name: "Colab", logo: <SimpleIconLogo icon={siGooglecolab} />, x: 73, y: 44, rotate: 6 },
+]
+
+// Figma, Miro and Notion are placeholders; swap in the tools you actually use.
+const tuckedTools: Tool[] = [
+  { name: "Miro", logo: <SimpleIconLogo icon={siMiro} /> },
+  { name: "Figma", logo: <SimpleIconLogo icon={siFigma} /> },
+  { name: "Notion", logo: <SimpleIconLogo icon={siNotion} /> },
 ]
 
 const experience = [
@@ -236,6 +243,25 @@ export default function App() {
           />
         </section>
 
+        <section className="toolkit-section" id="toolkit">
+          <h2>Skills, tools &amp; domains</h2>
+          <div className="toolkit-grid">
+            <div className="toolkit-group toolkit-group--skills">
+              <h3>Skills</h3>
+              <StickerCluster stickers={skills} aria-label="Skills" />
+            </div>
+            <div className="toolkit-group toolkit-group--tools">
+              <h3>Tools</h3>
+              <ToolFolder floating={floatingTools} tucked={tuckedTools} label="Tools I use" />
+              <p className="toolkit-hint">Drag the cards around</p>
+            </div>
+            <div className="toolkit-group toolkit-group--domains">
+              <h3>Domains</h3>
+              <StickerCluster stickers={domains} aria-label="Domains" />
+            </div>
+          </div>
+        </section>
+
         <section className="work-history" id="resume">
           <h2>Experience</h2>
           <Timeline
@@ -252,37 +278,6 @@ export default function App() {
             showMoreText="View earlier roles"
             showLessText="Show fewer roles"
           />
-        </section>
-
-        <section className="photo-marquee" aria-label="Photo gallery">
-          <h2>Things that inspire me</h2>
-          <MarqueeAlongSvgPath
-            path={marqueePath}
-            viewBox="0 0 996 330"
-            baseVelocity={4}
-            slowdownOnHover
-            draggable
-            repeat={2}
-            dragSensitivity={0.1}
-            className="photo-marquee-track"
-            responsive
-            grabCursor
-          >
-            {marqueeImages.map((image) => (
-              <div
-                key={image.src}
-                className="h-24 w-16 overflow-hidden rounded-md shadow-sm transition-transform duration-300 ease-in-out hover:scale-150"
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  draggable={false}
-                />
-              </div>
-            ))}
-          </MarqueeAlongSvgPath>
         </section>
       </main>
         <Footerdemo isDarkMode={isDarkMode} onDarkModeChange={setIsDarkMode} />

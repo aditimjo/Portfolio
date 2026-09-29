@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-@theme {
-  --font-jakarta-sans: "Plus Jakarta Sans", "IBM Plex Sans Condensed", sans-serif;
-}
-
 @font-face {
   font-family: "Geologica:Regular";
   src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
@@ -105,6 +101,10 @@ a {
   --surface-raised: rgb(255 255 255 / 72%);
   --text-primary: #111;
   --text-secondary: #6a7282;
+  --toolkit-thread: rgb(17 17 17 / 12%);
+  --toolkit-slot: rgb(17 17 17 / 16%);
+  --tool-card-border: rgb(17 17 17 / 7%);
+  --tool-card-shadow: rgb(17 17 17 / 26%);
   --text-tertiary: #7e7c7c;
   --border-color: #e5e7eb;
   --accent: #7349d6;
@@ -126,6 +126,10 @@ a {
   --surface-raised: rgb(28 28 30 / 78%);
   --text-primary: #f7f7f8;
   --text-secondary: #a9afbb;
+  --toolkit-thread: rgb(255 255 255 / 14%);
+  --toolkit-slot: rgb(255 255 255 / 20%);
+  --tool-card-border: rgb(255 255 255 / 10%);
+  --tool-card-shadow: rgb(0 0 0 / 60%);
   --text-tertiary: #8f949e;
   --border-color: #303036;
   --accent: #b9a2ef;
@@ -767,26 +771,287 @@ a {
   line-height: normal;
 }
 
-.photo-marquee {
+/* Skills, tools & domains: sticker piles either side of a tool folder */
+.toolkit-section {
+  --tool-card: 84px;
+  --folder-back: #f1b393;
+  --folder-front: rgb(248 202 176 / 94%);
+  --folder-edge: #eea07c;
+  --folder-ink: #d27d58;
+  --sticker-font: "Plus Jakarta Sans", var(--font-site);
+
   width: min(906px, calc(100% - 48px));
-  margin: 0 auto;
-  padding-bottom: 110px;
+  margin: 96px auto 0;
 }
 
-.photo-marquee > h2 {
-  margin: 0 0 24px;
+.toolkit-section > h2 {
+  margin: 0 0 40px -15px;
   color: var(--text-secondary);
   font-family: var(--font-site);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
+  line-height: 37.5px;
 }
 
-.photo-marquee-track {
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.toolkit-group {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.toolkit-group--tools {
+  grid-template-rows: auto 1fr auto;
+}
+
+.toolkit-group > h3 {
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--font-site);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.toolkit-hint {
+  margin: -4px 0 0;
+  color: var(--text-secondary);
+  font-family: var(--font-site);
+  font-size: 13px;
+}
+
+.sticker-cluster {
+  display: flex;
+  margin: 0;
+  padding: 8px 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.sticker {
+  position: relative;
+  margin: -2px -4px;
+  padding: 8px 14px 10px;
+  border-radius: 14px;
+  background: var(--sticker-color);
+  color: var(--sticker-ink);
+  font-family: var(--sticker-font);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  rotate: var(--sticker-rotate);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 30%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 45%),
+    inset 0 -2px 0 rgb(0 0 0 / 8%),
+    0 10px 22px -10px var(--sticker-color),
+    0 2px 5px rgb(0 0 0 / 10%);
+  transition:
+    rotate 220ms ease,
+    translate 220ms ease;
+}
+
+.sticker:hover {
+  z-index: 50 !important;
+  rotate: 0deg;
+  translate: 0 -3px;
+}
+
+.tool-stage {
+  position: relative;
   width: 100%;
-  aspect-ratio: 996 / 330;
-  max-width: 100%;
-  touch-action: pan-y;
-  user-select: none;
+  max-width: 400px;
+  aspect-ratio: 400 / 470;
+}
+
+.tool-threads {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tool-threads path {
+  fill: none;
+  stroke: var(--toolkit-thread);
+  stroke-width: 1;
+}
+
+.tool-slot {
+  position: absolute;
+  width: var(--tool-card);
+  height: var(--tool-card);
+  border: 1.5px dashed var(--toolkit-slot);
+  border-radius: 18px;
+  translate: calc(-50% + 12px) calc(-50% - 12px);
+}
+
+.tool-card-anchor {
+  position: absolute;
+  z-index: 3;
+  translate: -50% -50%;
+}
+
+.tool-card {
+  display: flex;
+  width: var(--tool-card);
+  height: var(--tool-card);
+  min-height: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--tool-card-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow:
+    0 14px 28px -14px var(--tool-card-shadow),
+    0 2px 6px rgb(17 17 17 / 6%);
+  cursor: grab;
+  touch-action: none;
+}
+
+.tool-card-logo,
+.tool-tucked-logo {
+  display: block;
+  aspect-ratio: 1;
+}
+
+.tool-card-logo {
+  width: 36%;
+}
+
+.tool-card-logo > svg,
+.tool-tucked-logo > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tool-card-name {
+  color: #4b5563;
+  font-family: var(--font-site);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.tool-folder {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  z-index: 2;
+  width: 74%;
+  height: 38%;
+  translate: -50% 0;
+}
+
+.tool-folder-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px 20px 20px 20px;
+  background: var(--folder-back);
+}
+
+.tool-folder-back::before {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 40%;
+  height: 28px;
+  border-radius: 12px 16px 0 0;
+  background: var(--folder-back);
+  content: "";
+}
+
+.tool-folder-tucked {
+  position: absolute;
+  right: 0;
+  bottom: 64%;
+  left: 0;
+}
+
+.tool-tucked-card {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 30%;
+  aspect-ratio: 1 / 1.15;
+  padding-top: 9%;
+  justify-content: center;
+  border: 1px solid rgb(17 17 17 / 8%);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 16px -8px rgb(17 17 17 / 30%);
+}
+
+.tool-tucked-card--0 {
+  left: 12%;
+  rotate: -8deg;
+  translate: 0 14%;
+}
+
+.tool-tucked-card--1 {
+  left: 35%;
+  z-index: 1;
+}
+
+.tool-tucked-card--2 {
+  left: 58%;
+  rotate: 7deg;
+  translate: 0 10%;
+}
+
+.tool-tucked-logo {
+  width: 46%;
+}
+
+.tool-folder-front {
+  position: absolute;
+  right: -3%;
+  bottom: 0;
+  left: -3%;
+  z-index: 2;
+  height: 74%;
+  border: 1.5px solid var(--folder-edge);
+  border-radius: 18px;
+  background: var(--folder-front);
+  box-shadow: 0 22px 40px -24px rgb(200 110 70 / 70%);
+  transform: perspective(700px) rotateX(9deg);
+  transform-origin: bottom center;
+}
+
+.tool-folder-label {
+  position: absolute;
+  bottom: 13%;
+  left: 8%;
+  color: var(--folder-ink);
+  font-family: var(--sticker-font);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker {
+    transition: none;
+  }
 }
 
 .timeline ol {
@@ -1415,13 +1680,33 @@ a {
     font-size: 24px;
   }
 
-  .photo-marquee {
+  .toolkit-section {
+    --tool-card: 70px;
+
     width: min(100% - 32px, 540px);
-    padding-bottom: 72px;
+    margin-top: 80px;
   }
 
-  .photo-marquee > h2 {
+  .toolkit-section > h2 {
+    margin: 0 0 28px;
     font-size: 24px;
+  }
+
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .tool-stage {
+    max-width: 340px;
+  }
+
+  .sticker {
+    font-size: 17px;
+  }
+
+  .tool-folder-label {
+    font-size: 16px;
   }
 
   .hover-reveal-cards {
