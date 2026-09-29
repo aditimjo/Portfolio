@@ -763,6 +763,28 @@ a {
   line-height: normal;
 }
 
+.photo-marquee {
+  width: min(906px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-bottom: 110px;
+}
+
+.photo-marquee > h2 {
+  margin: 0 0 24px;
+  color: var(--text-secondary);
+  font-family: var(--font-site);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.photo-marquee-track {
+  width: 100%;
+  aspect-ratio: 996 / 330;
+  max-width: 100%;
+  touch-action: pan-y;
+  user-select: none;
+}
+
 .timeline ol {
   margin: 0;
   padding: 0;
@@ -1386,6 +1408,15 @@ a {
   .selected-work > h2,
   .work-history > h2 {
     margin-left: 0;
+    font-size: 24px;
+  }
+
+  .photo-marquee {
+    width: min(100% - 32px, 540px);
+    padding-bottom: 72px;
+  }
+
+  .photo-marquee > h2 {
     font-size: 24px;
   }
 
