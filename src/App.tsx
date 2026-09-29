@@ -16,6 +16,11 @@ import generativeBlossom from "@/assets/inspiration/generative-blossom.jpg"
 import horseLionCube from "@/assets/inspiration/horse-lion-cube.jpg"
 import miyazakiQuote from "@/assets/inspiration/miyazaki-quote.jpg"
 import vanGoghIrises from "@/assets/inspiration/van-gogh-irises.jpg"
+import glitchMushrooms from "@/assets/inspiration/glitch-mushrooms.jpg"
+import lasManosHand from "@/assets/inspiration/las-manos-hand.jpg"
+import mechanicalButterfly from "@/assets/inspiration/mechanical-butterfly.jpg"
+import phoneHandoff from "@/assets/inspiration/phone-handoff.jpg"
+import threadTheory from "@/assets/inspiration/thread-theory.jpg"
 
 const selectedWork: CardData[] = [
   {
@@ -76,6 +81,11 @@ const marqueeImages = [
   { src: dataCheetah, alt: "Running cheetah overlaid with glowing data points" },
   { src: vanGoghIrises, alt: "Irises by Vincent van Gogh" },
   { src: horseLionCube, alt: "Stippled engraving of a horse and lion sliced into an isometric cube" },
+  { src: phoneHandoff, alt: "Illustration of a hand passing a glowing phone to a silhouetted person" },
+  { src: threadTheory, alt: "Thread Theory: An Index of Mind poster linking a figure to hand-lettered notes" },
+  { src: lasManosHand, alt: "Las Manos poster of a hand assembled from mixed-material grid tiles" },
+  { src: mechanicalButterfly, alt: "Butterfly built from disassembled electronic parts" },
+  { src: glitchMushrooms, alt: "Tree mushrooms merged with blue-screen error text" },
 ]
 
 const experience = [
@@ -252,7 +262,7 @@ export default function App() {
             baseVelocity={8}
             slowdownOnHover
             draggable
-            repeat={3}
+            repeat={2}
             dragSensitivity={0.1}
             className="photo-marquee-track"
             responsive
