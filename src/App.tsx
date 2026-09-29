@@ -13,7 +13,9 @@ import anatomyIllustration from "@/assets/inspiration/anatomy-illustration.jpg"
 import dataCheetah from "@/assets/inspiration/data-cheetah.jpg"
 import floatingRooftops from "@/assets/inspiration/floating-rooftops.jpg"
 import generativeBlossom from "@/assets/inspiration/generative-blossom.jpg"
+import horseLionCube from "@/assets/inspiration/horse-lion-cube.jpg"
 import miyazakiQuote from "@/assets/inspiration/miyazaki-quote.jpg"
+import vanGoghIrises from "@/assets/inspiration/van-gogh-irises.jpg"
 
 const selectedWork: CardData[] = [
   {
@@ -72,6 +74,8 @@ const marqueeImages = [
   { src: miyazakiQuote, alt: "Hayao Miyazaki with the quote \"Always believe in yourself\"" },
   { src: generativeBlossom, alt: "Collage of cherry blossom photography and generative dot patterns" },
   { src: dataCheetah, alt: "Running cheetah overlaid with glowing data points" },
+  { src: vanGoghIrises, alt: "Irises by Vincent van Gogh" },
+  { src: horseLionCube, alt: "Stippled engraving of a horse and lion sliced into an isometric cube" },
 ]
 
 const experience = [
@@ -248,7 +252,7 @@ export default function App() {
             baseVelocity={8}
             slowdownOnHover
             draggable
-            repeat={4}
+            repeat={3}
             dragSensitivity={0.1}
             className="photo-marquee-track"
             responsive
