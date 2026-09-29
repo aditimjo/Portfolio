@@ -9,6 +9,11 @@ import GlowCursor from "@/components/ui/glow-cursor"
 import ModalCards, { type CardData } from "@/components/ui/modal-cards"
 import { Timeline } from "@/components/ui/timeline"
 import MarqueeAlongSvgPath from "@/components/ui/marquee-along-svg-path"
+import anatomyIllustration from "@/assets/inspiration/anatomy-illustration.jpg"
+import dataCheetah from "@/assets/inspiration/data-cheetah.jpg"
+import floatingRooftops from "@/assets/inspiration/floating-rooftops.jpg"
+import generativeBlossom from "@/assets/inspiration/generative-blossom.jpg"
+import miyazakiQuote from "@/assets/inspiration/miyazaki-quote.jpg"
 
 const selectedWork: CardData[] = [
   {
@@ -60,23 +65,14 @@ const navigation = [
 const marqueePath =
   "M1 209.434C58.5872 255.935 387.926 325.938 482.583 209.434C600.905 63.8051 525.516 -43.2211 427.332 19.9613C329.149 83.1436 352.902 242.723 515.041 267.302C644.752 286.966 943.56 181.94 995 156.5"
 
-const unsplashParams = "auto=format&fit=crop&w=320&q=75"
-
-// Placeholder stock photos from Unsplash; swap in your own images when ready.
+// Inspiration board images, moving along the marquee path.
 const marqueeImages = [
-  "photo-1436491865332-7a61a109cc05",
-  "photo-1578321272176-b7bbc0679853",
-  "photo-1547153760-18fc86324498",
-  "photo-1507146426996-ef05306b995a",
-  "photo-1517649763962-0c623066013b",
-  "photo-1521572163474-6864f9cf17ab",
-  "photo-1470071459604-3b5ec3a7fe05",
-  "photo-1550859492-d5da9d8e45f3",
-  "photo-1506905925346-21bda4d32df4",
-  "photo-1469474968028-56623f02e42e",
-  "photo-1441974231531-c6227db76b6e",
-  "photo-1501785888041-af3ef285b470",
-].map((id) => `https://images.unsplash.com/${id}?${unsplashParams}`)
+  { src: anatomyIllustration, alt: "Colourful anatomical illustration of a torso with a heart monitor" },
+  { src: floatingRooftops, alt: "Poster of traditional Chinese rooftops floating among glass slabs" },
+  { src: miyazakiQuote, alt: "Hayao Miyazaki with the quote \"Always believe in yourself\"" },
+  { src: generativeBlossom, alt: "Collage of cherry blossom photography and generative dot patterns" },
+  { src: dataCheetah, alt: "Running cheetah overlaid with glowing data points" },
+]
 
 const experience = [
   {
@@ -252,20 +248,20 @@ export default function App() {
             baseVelocity={8}
             slowdownOnHover
             draggable
-            repeat={2}
+            repeat={4}
             dragSensitivity={0.1}
             className="photo-marquee-track"
             responsive
             grabCursor
           >
-            {marqueeImages.map((src) => (
+            {marqueeImages.map((image) => (
               <div
-                key={src}
+                key={image.src}
                 className="h-24 w-16 overflow-hidden rounded-md shadow-sm transition-transform duration-300 ease-in-out hover:scale-150"
               >
                 <img
-                  src={src}
-                  alt=""
+                  src={image.src}
+                  alt={image.alt}
                   className="h-full w-full object-cover"
                   loading="lazy"
                   draggable={false}
